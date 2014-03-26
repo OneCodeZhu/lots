@@ -13,10 +13,19 @@ def do_all():
         print ch.getLast5Red(phase)
 
 def do_one(phase):
-    
+    ch = check_methods.lotCheck()
+    print ch.getLast5Index(phase)
 
 
 
 
-switch = sys.argv[1]
+switch = int(sys.argv[1])
 if switch == 0:
+    do_all()
+elif switch == 1:
+    if sys.argv[2]:
+        do_one(sys.argv[2])
+    else:
+        print "worng param numbers!!!"
+else:
+    print "the first param be 1 or 0!!!"

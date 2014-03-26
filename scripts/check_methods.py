@@ -24,18 +24,19 @@ class lotCheck():
     def getLast5Red(self,phase):
         """get last five issue red ball"""
         sql = "select * from bingo where index_id < (select index_id from bingo where phase=%s) order by index_id desc limit 5;" % phase
-        self.cursor.execute(sql)
         cur_index = self.getCurIndex(phase)
         last5red = {}
-        for one in self.cursor.fetchall():
+        self.cursor.execute(sql)
+        last5tuple = self.cursor.fetchall()
+        for one in last5tuple:
             last5red[int(one[9]) - int(cur_index)] = one[2:7]
         return last5red
     def getLast5Blue(self,phase):
         """get last five issue blue ball"""
         sql = "select * from bingo where index_id < (select index_id from bingo where phase=%s) order by index_id desc limit 5;" % phase
-        self.cursor.execute(sql)
         cur_index = lotCheck.getCurIndex(self,phase)
         last5blue = {}
+        self.cursor.execute(sql)
         for one in self.cursor.fetchall():
             last5blue[int(one[9]) - int(cur_index)] = one[7:9]
         return last5blue
@@ -53,6 +54,17 @@ class lotCheck():
         fetch_cur_blue = self.cursor.fetchone()
         currentblue = [int(x) for x in fetch_cur_blue]
         return currentblue
+    def getLast5Index(self,phase):
+        """get last 5 issues' index_id"""
+        sql_index = "select index_id from bingo where index_id < (select index_id from bingo where phase=%s) order by index_id desc limit 5;" % phase
+        last5_index = []
+        self.cursor.execute(sql_index)
+        for (one,) in self.cursor.fetchall():
+            last5_index.append(int(one))
+        return last5_index
+        
+
+
 
 
 
