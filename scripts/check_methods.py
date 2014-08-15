@@ -7,7 +7,7 @@ class lotCheck():
         """init to connect the database """
         self.host = '10.192.0.5'
         self.user = 'root'
-        self.password = 'fengmao'
+        self.password = 'fexgmxo'
         self.port = '3306'
         self.database = 'cp'
         self.db = MySQLdb.connect(self.host,self.user,self.password,self.database)
