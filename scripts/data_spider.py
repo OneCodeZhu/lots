@@ -41,7 +41,7 @@ def spider(url):
 def tosql(numlist):
     host = '10.192.0.5'
     user = 'root'
-    password = 'fengmao'
+    password = 'fexgmxo'
     port = '3306'
     database = 'cp'
     db = MySQLdb.connect(host,user,password,database)
